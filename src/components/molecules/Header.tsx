@@ -8,7 +8,7 @@ const Header = () => {
 
     return(
         <>
-            <section className='flex justify-between px-3 h-[60px] items-center shadow-lg shadow-slate-100'>
+            <section className='flex justify-between px-6 h-[60px] items-center shadow-lg shadow-slate-100'>
                 <section className='flex space-x-2 items-center'>
                     <img width={30} src={hamburger} onClick={toggle}/>
                     <div>React Admin</div>
