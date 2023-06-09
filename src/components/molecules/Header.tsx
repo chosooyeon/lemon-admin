@@ -1,21 +1,20 @@
-import { useState } from 'react'
-import { Link } from "react-router-dom";
+import hamburger from '../../assets/hamburger.png';
+import { useSetRecoilState } from 'recoil';
+import { sideBar } from '../../recoil';
 
 const Header = () => {
-    const [toggle, setToggle] = useState(false)
-    const switchToggle = () => {
-        setToggle(!toggle)
-    }
+    const setToggleAtom = useSetRecoilState(sideBar);
+    const toggle = () => setToggleAtom((prev) => !prev);
+
     return(
         <>
-            {/* <button onClick={switchToggle}>토글</button> */}
             <section className='flex justify-between px-3 h-[60px] items-center shadow-lg shadow-slate-100'>
-                <section className='flex space-x-2'>
-                    <div>메뉴바</div>
+                <section className='flex space-x-2 items-center'>
+                    <img width={30} src={hamburger} onClick={toggle}/>
                     <div>React Admin</div>
                 </section>
                 <section>
-                    <Link to={'/'}>로그인</Link>
+                    <div>로그아웃</div>
                 </section>
             </section>
         </>
