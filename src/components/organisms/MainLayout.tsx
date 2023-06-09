@@ -1,8 +1,8 @@
-import Header from '../molecules/Header'
-import LeftBar from '../molecules/LeftBar'
+import Header from '@/components/molecules/Header'
+import LeftBar from '@/components/molecules/LeftBar'
 import { Outlet } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { sideBar } from '../../recoil';
+import { sideBar } from '@/recoil';
 
 const MainLayout = () => {
   const isToggle = useRecoilValue(sideBar);

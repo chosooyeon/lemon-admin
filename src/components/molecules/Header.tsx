@@ -1,6 +1,6 @@
-import hamburger from '../../assets/hamburger.png';
+import hamburger from '@/assets/hamburger.png';
 import { useSetRecoilState } from 'recoil';
-import { sideBar } from '../../recoil';
+import { sideBar } from '@/recoil';
 
 const Header = () => {
     const setToggleAtom = useSetRecoilState(sideBar);
