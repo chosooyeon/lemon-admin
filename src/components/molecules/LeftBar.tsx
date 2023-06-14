@@ -4,10 +4,12 @@ import { Link, useLocation } from "react-router-dom";
 const LeftBar = () => {
     const location = useLocation();
     const [loc, setLoc] = useState('')
-    const menu = [{'icon':'', 'id':'menu', 'name':'메뉴관리'},
+    const menu = [
+                    {'icon':'', 'id':'stats', 'name':'통계관리'},
+                    {'icon':'', 'id':'menu', 'name':'메뉴관리'},
                     {'icon':'', 'id':'user', 'name':'유저관리'},
                     {'icon':'', 'id':'app', 'name':'앱관리'},
-                ]
+                 ]
 
     useEffect(() => {
         setLoc(location.pathname)
