@@ -1,15 +1,15 @@
-import Line from '@/components/atoms/LineChart'
-import Bar from '@/components/atoms/BarChart'
-import { myLineData } from '@/json/LineChartData'
-import { myBarData } from '@/json/BarChartData'
+import { BarChart } from "@/components/atoms/BarChart"
+import { LineChart } from "@/components/atoms/LineChart"
+import { LineBarChart } from "@/components/atoms/LineBarChart"
 
-const MenuPage = () => {
+const StatsPage = () => {
     return(
         <>
-            <Line data={myLineData}/>
-            <Bar data={myBarData}/>
+            <LineBarChart/>
+            <LineChart/>
+            <BarChart/>
         </>
     )
 }
 
-export default MenuPage
+export default StatsPage
