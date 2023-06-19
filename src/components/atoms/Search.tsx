@@ -1,5 +1,5 @@
 import { Card, InputAdornment, OutlinedInput, SvgIcon } from '@mui/material';
-
+import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 export const Search = () => (
     <Card sx={{ p: 2 }}>
       <OutlinedInput
@@ -9,9 +9,11 @@ export const Search = () => (
         startAdornment={(
           <InputAdornment position="start">
             <SvgIcon
+
               color="action"
               fontSize="small"
             >
+            <MagnifyingGlassIcon />
             </SvgIcon>
           </InputAdornment>
         )}
