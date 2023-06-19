@@ -1,19 +1,29 @@
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Button, TextField, Box } from '@mui/material/';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import { useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 
+
+interface UserValue {
+    email: string
+    password: string
+}
 
 const LoginPage = () => {
-    const {
-        register,
-        handleSubmit,
-    } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm<UserValue>()
+    const navigate = useNavigate();
+    const passwordRef = useRef<string | null>(null)
+    passwordRef.current = watch("password")
 
-    const submitForm = (data) => {
-        console.log(data);
-        console.log('3333')
-    };
+    const onSubmitHandler: SubmitHandler<UserValue> = (data) => {
+        if(passwordRef.current === data.password){
+            console.log(data);
+            console.log(passwordRef.current);
+            navigate("/user")
+        }
+    }
 
     return (
         <>
@@ -24,9 +34,9 @@ const LoginPage = () => {
                     flexDirection: 'column',
                     alignItems: 'center',
                 }}
-                >
+            >
                 <div>Sign to Account</div>
-                <form autoComplete="off" onSubmit={handleSubmit(submitForm)} noValidate sx={{ mt: 1 }}>
+                <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
                     <TextField
                         required
                         autoFocus
@@ -35,8 +45,9 @@ const LoginPage = () => {
                         id="email"
                         label="Username"
                         autoComplete="email"
-                        {...register("email", { required: true, maxLength: 10 })}
+                        {...register("email", { required: true, pattern: { value: /^\S+@\S+$/i, message: "이메일만 가능합니다." } })}
                     />
+                    {errors?.email?.message}
                     <TextField
                         required
                         autoFocus
@@ -45,7 +56,7 @@ const LoginPage = () => {
                         id="password"
                         label="Password"
                         autoComplete="current-password"
-                        {...register("password", { required: true, maxLength: 10 })}
+                        {...register("password", { required: true, validate: (value) => value === passwordRef.current })}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
