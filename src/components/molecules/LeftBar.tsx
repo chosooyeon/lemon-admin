@@ -7,7 +7,7 @@ const LeftBar = () => {
     const menu = [
                     {'icon':'', 'id':'stats', 'name':'통계관리'},
                     {'icon':'', 'id':'menu', 'name':'메뉴관리'},
-                    {'icon':'', 'id':'user', 'name':'유저관리'},
+                    {'icon':'', 'id':'user', 'name':'사용자관리'},
                     {'icon':'', 'id':'app', 'name':'앱관리'},
                  ]
 

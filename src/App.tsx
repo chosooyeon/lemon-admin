@@ -3,7 +3,7 @@ import MainLayout from '@/components/organisms/MainLayout';
 import StatsPage from '@/pages/StatsPage';
 import MenuPage from '@/pages/MenuPage'
 import LoginPage from '@/pages/LoginPage';
-import UserPage from '@/pages/UserPage';
+import UserPage from '@/pages/user/UserPage';
 import AppPage from '@/pages/AppPage';
 
 function App() {
