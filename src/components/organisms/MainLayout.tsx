@@ -14,9 +14,9 @@ const MainLayout = () => {
       </div>
       <div className={isToggle ? '-translate-x-[230px] duration-300 ease-in-out pt-[60px]' : 'duration-300 ease-in-out pt-[60px]'}>
         <LeftBar />
-        <div className='ml-[256px] mt-6  h-[calc(100vh-120px)]'>
+        <main className='ml-[230px] h-[calc(100vh-120px)] bg-slate-100 w-[100%]'>
           <Outlet />
-        </div>
+        </main>
       </div>
     </>
   );

@@ -17,7 +17,7 @@ const LeftBar = () => {
     
     return(
         <>
-            <section className='overflow-auto w-[230px] fixed h-[calc(100%-60px)] bg-[#f6f7fd] text-[rgba(56,56,56,0.7)]'>
+            <section className='overflow-auto w-[230px] fixed h-[calc(100%-60px)] bg-[#ffffff] text-[rgba(56,56,56,0.7)] border-r-[1px]'>
                 <ul className="space-y-3 ml-6 mt-6">
                 {menu.map((item,idx)=>(
                     <li key={idx}>
