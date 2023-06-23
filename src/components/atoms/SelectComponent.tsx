@@ -17,6 +17,7 @@ export const SelectComponent = () => {
             sx={{paddingRight:'8%'}}
         >
             <Typography sx={{ width: '8%'}}> 병원</Typography>
+
             <FormControl sx={{ width: 500 }}>
                 <InputLabel id="demo-simple-select-autowidth-label">병원을 선택하세요</InputLabel>
                 <Select
@@ -25,13 +26,13 @@ export const SelectComponent = () => {
                     value={hospitalCd}
                     onChange={handleChange}
                     fullWidth
-                    label="Age"
                 >
-                    <MenuItem>레몬종합병원</MenuItem>
-                    <MenuItem>강북삼성병원</MenuItem>
-                    <MenuItem>세브란스병원</MenuItem>
+                    <MenuItem value={10}>레몬종합병원</MenuItem>
+                    <MenuItem value={20}>강북삼성병원</MenuItem>
+                    <MenuItem value={30}>세브란스병원</MenuItem>
                 </Select>
             </FormControl>
+
         </Stack>
     );
 }
