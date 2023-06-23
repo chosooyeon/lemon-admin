@@ -1,153 +1,57 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  TableContainer,
-  Paper,
-} from '@mui/material';
-import React from 'react';
 
-interface Column {
-  id: 'hospitalCd' | 'enabled' | 'userNm' | 'sex' | 'email';
-  label: string;
-  minWidth?: number;
-  align?: 'right';
-  format?: (value: number) => string;
-}
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { PopupComponent } from '../atoms/PopupComponent';
 
-const columns: Column[] = [
-  { id: 'hospitalCd', label: '병원', minWidth: 170 },
-  { id: 'enabled', label: '사용여부', minWidth: 100 },
-  {
-    id: 'userNm',
-    label: '성명',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'sex',
-    label: '성별',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'email',
-    label: '이메일',
-    minWidth: 170,
-    align: 'right',
-    format: (value: number) => value.toFixed(2),
-  },
+
+const columns: GridColDef[] = [
+  { field: 'hospitalCd', headerName: '병원', width: 170, disableColumnMenu: true },
+  { field: 'enabled', headerName: '사용여부', width: 170, disableColumnMenu: true },
+  { field: 'userNm', headerName: '성명', width: 170, disableColumnMenu: true },
+  { field: 'sex', headerName: '성별', width: 150, disableColumnMenu: true },
+  { field: 'email', headerName: '이메일', width: 170, disableColumnMenu: true },
+  { field: 'countyCd', headerName: '국가코드', width: 170, disableColumnMenu: true },
+  // { id: 'action', label: 'action', minWidth: 170},
 ];
 
-interface Data {
-  hospitalCd: string;
-  enabled: string;
-  userNm: string;
-  sex: string;
-  email: string;
-}
-
-function createData(
-  hospitalCd: string,
-  enabled: string,
-  userNm: string,
-  sex: string,
-  email: string
-): Data {
-
-  return { hospitalCd, enabled, userNm, sex, email };
-}
-
 const rows = [
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('37100441', '사용', '김******)', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '김******)', '여', 'email@lemonhc.com'),
-  createData('37100441', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '김******)', '여', 'email@lemonhc.com'),
-  createData('37100441', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '김******)', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
-  createData('37100441', '사용', '김******)', '여', 'email@lemonhc.com'),
-  createData('11100222', '사용', '꺽*찬', '여', 'email@lemonhc.com'),
+  { id: 1, hospitalCd: '01', enabled: '사용', userNm: '꺽*찬', sex: '여', email: 'e2mail@lemonhc.com', countyCd: 'KR' },
+  { id: 2, hospitalCd: '11100222', enabled: '미사용', userNm: '꺽*찬', sex: '여', email: 'e3mail@lemonhc.com', countyCd: 'KR' },
+  { id: 3, hospitalCd: '02', enabled: '사용', userNm: '꺽*찬', sex: '여', email: 'ema4il@lemonhc.com', countyCd: 'KR' },
+  { id: 4, hospitalCd: '11100222', enabled: '미사용', userNm: '꺽*찬', sex: '여', email: 'em3ail@lemonhc.com', countyCd: 'KR' },
+  { id: 5, hospitalCd: '04', enabled: '사용', userNm: '꺽*찬', sex: '여', email: 'ema5il@lemonhc.com', countyCd: 'KR' },
+  { id: 6, hospitalCd: '11100222', enabled: '사용', userNm: '꺽*찬', sex: '남', email: 'ema6il@lemonhc.com', countyCd: 'KR' },
+  { id: 7, hospitalCd: '11100222', enabled: '미사용', userNm: '꺽*찬', sex: '남', email: 'em7ail@lemonhc.com', countyCd: 'KR' },
+  { id: 8, hospitalCd: '11100222', enabled: '미사용', userNm: '꺽*찬', sex: '여', email: 'ema8il@lemonhc.com', countyCd: 'KR' },
+  { id: 9, hospitalCd: '37100441', enabled: '사용', userNm: '김******)', sex: '남', email: 'ema9il@lemonhc.com', countyCd: '' },
+  { id: 10, hospitalCd: '11100222', enabled: '사용', userNm: '김******)', sex: '여', email: 'ema0il@lemonhc.com', countyCd: '' },
+  { id: 11, hospitalCd: '37100441', enabled: '미사용', userNm: '꺽*찬', sex: '남', email: 'e3mail@lemonhc.com', countyCd: 'KR' },
+  { id: 12, hospitalCd: '11100222', enabled: '사용', userNm: '김******)', sex: '여', email: 'emai44l@lemonhc.com', countyCd: 'KR' },
+  { id: 13, hospitalCd: '37100441', enabled: '사용', userNm: '꺽*찬', sex: '남', email: 'emai55l@lemonhc.com', countyCd: 'KR' },
+  { id: 14, hospitalCd: '11100222', enabled: '미사용', userNm: '김******)', sex: '여', email: 'em444ail@lemonhc.com', countyCd: 'KR' },
+  { id: 15, hospitalCd: '11100222', enabled: '미사용', userNm: '꺽*찬', sex: '여', email: 'ema333il@lemonhc.com', countyCd: 'KR' },
+  { id: 16, hospitalCd: '37100441', enabled: '미사용', userNm: '김******)', sex: '여', email: 'ema666il@lemonhc.com', countyCd: 'KR' },
+  { id: 17, hospitalCd: '11100222', enabled: '사용', userNm: '꺽*찬', sex: '남', email: 'ema77il@lemonhc.com', countyCd: 'KR' },
 ];
 
 
 
 const UserTable = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
   return (
     <>
-      <Paper sx={{ width: '100%' }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                {columns.map((column) => (
-                  <TableCell
-                    key={column.id}
-                    align={column.align}
-                    style={{ top: 0, minWidth: column.minWidth }}
-                  >
-                    {column.label}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
-                  return (
-                    <TableRow hover role="checkbox" tabIndex={-1}>
-                      {columns.map((column) => {
-                        const value = row[column.id];
-                        return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === 'number'
-                              ? column.format(value)
-                              : value}
-                          </TableCell>
-                        );
-                      })}
-                    </TableRow>
-                  );
-                })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[5, 10]}
+        // checkboxSelection
         />
-      </Paper>
-
+        <PopupComponent />
+      </div>
     </>
   )
 }
