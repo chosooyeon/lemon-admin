@@ -1,8 +1,8 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { PopupComponent } from '../atoms/PopupComponent';
-import { Card } from '@mui/material';
-
+import { Card, IconButton } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
 
 const columns: GridColDef[] = [
   { field: 'hospitalCd', headerName: '병원', width: 170, disableColumnMenu: true },
@@ -11,6 +11,26 @@ const columns: GridColDef[] = [
   { field: 'sex', headerName: '성별', width: 150, disableColumnMenu: true },
   { field: 'email', headerName: '이메일', width: 170, disableColumnMenu: true },
   { field: 'countyCd', headerName: '국가코드', width: 170, disableColumnMenu: true },
+  {
+    field: 'action',
+    width: 130,
+    sortable: false,
+    renderCell: (params) => {
+      const onClickEdit = async () => {
+        // TODO 팝업 추가
+         return alert(JSON.stringify(params.row, null, 4));
+      };
+      const onClickDelete = async () => {};
+
+      return (
+        <>
+          <IconButton color="secondary" onClick={onClickEdit}>
+            <EditIcon />
+          </IconButton>
+        </>
+      );
+    },
+  },
   // { id: 'action', label: 'action', minWidth: 170},
 ];
 
