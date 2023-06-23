@@ -1,8 +1,10 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Button, TextField, Box, Typography, Stack, Link } from '@mui/material/';
+import { TextField, Typography, Stack, Link } from '@mui/material/';
 import { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '@/assets/logo_lemonhc_text.png'
+import { Box, Button } from '@mui/joy';
+import { SelectComponent } from '@/components/atoms/SelectComponent';
 
 interface UserValue {
   email: string
@@ -56,6 +58,7 @@ const LoginPage = () => {
             </Stack>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
               <Stack spacing={3}>
+                <SelectComponent />
                 <TextField
                   required
                   autoFocus
@@ -85,16 +88,9 @@ const LoginPage = () => {
                   Forgot Password ?
                 </Link>
               </Stack>
-
-              <Button
-                fullWidth
-                size="large"
-                sx={{ mt: 3 }}
-                type="submit"
-                variant="contained"
-              >
-                Sign in
-              </Button>
+               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap'}}>
+                     <Button size="lg" fullWidth type="submit" sx={{ mt: 3 }}>로그인</Button>
+              </Box>
             </form>
           </div>
         </Box>

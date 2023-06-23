@@ -16,7 +16,7 @@ export const SelectComponent = () => {
             spacing={1}
             sx={{paddingRight:'8%'}}
         >
-            <Typography sx={{ width: '8%'}}> 병원</Typography>
+            <Typography sx={{ width: '8%'}}>병원</Typography>
 
             <FormControl sx={{ width: 500 }}>
                 <InputLabel id="demo-simple-select-autowidth-label">병원을 선택하세요</InputLabel>
