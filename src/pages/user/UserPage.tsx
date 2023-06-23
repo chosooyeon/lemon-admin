@@ -1,8 +1,9 @@
 import { Search } from '@/components/atoms/Search';
 import UserTable from '@/components/molecules/UserTable';
 import { SelectComponent } from '@/components/atoms/SelectComponent';
-import { Box, Button, Card, CardActions, Container, Stack, SvgIcon, Typography } from '@mui/material';
+import { Card, CardActions, Container, Stack, SvgIcon, Typography } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import { Box, Button } from '@mui/joy';
 
 const UserPage = () => {
     return (
@@ -39,16 +40,9 @@ const UserPage = () => {
                             </Stack>
                         </Card>
                         <CardActions sx={{ justifyContent: 'flex-end' }}>
-                            <Button
-                                startIcon={(
-                                    <SvgIcon fontSize="small">
-                                        <RefreshIcon />
-                                    </SvgIcon>
-                                )}
-                                variant="contained"
-                            >
-                                REFRESH
-                            </Button>
+                            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
+                                <Button startDecorator={<RefreshIcon />}>Refresh</Button>
+                            </Box>
                         </CardActions>
                         <UserTable />
                     </Stack>
