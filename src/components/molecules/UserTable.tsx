@@ -1,6 +1,7 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { PopupComponent } from '../atoms/PopupComponent';
+import { Card } from '@mui/material';
 
 
 const columns: GridColDef[] = [
@@ -39,17 +40,19 @@ const UserTable = () => {
   return (
     <>
       <div style={{ height: 400, width: '100%' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
-            },
-          }}
-          pageSizeOptions={[5, 10]}
-        // checkboxSelection
-        />
+        <Card sx={{ p: 2 }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 5 },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+          // checkboxSelection
+          />
+        </Card>
         <PopupComponent />
       </div>
     </>
