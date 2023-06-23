@@ -1,7 +1,5 @@
-import { BarChart } from "@/components/atoms/BarChart"
-import { LineChart } from "@/components/atoms/LineChart"
-import { LineBarChart } from "@/components/atoms/LineBarChart"
 import { Box, Container, Stack, Typography } from '@mui/material';
+import UserStatsLayout from "@/components/organisms/UserStatsLayout";
 
 const StatsPage = () => {
     return(
@@ -28,15 +26,7 @@ const StatsPage = () => {
                             </Stack>
                         </Stack>
 
-                        <div className="w-2/4">
-                            <LineBarChart/>
-                        </div>
-                        <div className="w-2/4">
-                            <LineChart/>    
-                        </div>
-                        <div className="w-2/4">
-                            <BarChart/>
-                        </div>
+                        <UserStatsLayout/>
 
                     </Stack>
                 </Container>

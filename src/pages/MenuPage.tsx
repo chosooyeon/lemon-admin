@@ -1,3 +1,4 @@
+import MenuTreeLayout from '@/components/organisms/MenuTreeLayout';
 import { Box, Container, Stack, Typography, Button } from '@mui/material';
 
 
@@ -26,11 +27,13 @@ const MenuPage = () => {
                         </Stack>
                     </Stack>
 
-                    <Stack spacing={2} direction="row">
+                    <MenuTreeLayout/>
+                    
+                    {/* <Stack spacing={2} direction="row">
                         <Button variant="text">Text</Button>
                         <Button variant="contained">Contained</Button>
                         <Button variant="outlined">Outlined</Button>
-                    </Stack>
+                    </Stack> */}
                 
                 </Stack>
                 </Container>
