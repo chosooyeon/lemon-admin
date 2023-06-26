@@ -1,34 +1,31 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, { selectClasses } from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 
-const SelectComp = () => {
-  const [age, setAge] = React.useState('');
+interface ChildProps {
+  props: string[];
+}
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
-
+const SelectComp = ({props}:ChildProps) => {
   return (
-    <Box sx={{ minWidth: 120 }}>
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Age"
-          onChange={handleChange}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
-    </Box>
+    <Select
+      placeholder="선택하세요"
+      indicator={<KeyboardArrowDown />}
+      sx={{
+        width: 240,
+        [`& .${selectClasses.indicator}`]: {
+          transition: '0.2s',
+          [`&.${selectClasses.expanded}`]: {
+            transform: 'rotate(-180deg)',
+          },
+        },
+      }}>
+      {
+        props.map((item) => (
+          <Option value={item}>{item}</Option>
+        ))
+      }
+    </Select>
   );
 }
 

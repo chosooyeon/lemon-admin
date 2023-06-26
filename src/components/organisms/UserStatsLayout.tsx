@@ -1,5 +1,5 @@
 import CalendarComp from '@/components/atoms/CalendarComp'
-import SelectComp from '../atoms/SelectComp'
+//import SelectComp from '../atoms/SelectComp'
 import Grid from '@mui/material/Grid';
 import { Card } from '@mui/material';
 import { BarChart } from "@/components/atoms/BarChart"
@@ -11,7 +11,7 @@ const UserStatsLayout = () => {
         <>
             <Card sx={{ p: 2 }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={4} marginTop={1}><SelectComp/></Grid>
+                    {/* <Grid item xs={4} marginTop={1}><SelectComp/></Grid> */}
                     <Grid item xs={2}><CalendarComp/></Grid>
                     <Grid item xs={2}><CalendarComp/></Grid>
                 </Grid>
