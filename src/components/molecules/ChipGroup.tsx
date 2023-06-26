@@ -3,8 +3,6 @@ import Box from '@mui/joy/Box';
 import Checkbox from '@mui/joy/Checkbox';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
-import Typography from '@mui/joy/Typography';
-import Sheet from '@mui/joy/Sheet';
 import Done from '@mui/icons-material/Done';
 
 export default function ChipGroup() {
@@ -12,13 +10,6 @@ export default function ChipGroup() {
   const role = ['Elevator', 'Washer/Dryer', 'Fireplace', 'Dogs ok', 'Cats ok']
 
   return (
-    // <Sheet
-    //   variant="outlined"
-    //   sx={{ width: 360, p: 2, borderRadius: 'sm', bgcolor: 'background.body' }}
-    // >
-    //   <Typography id="rank" level="body2" fontWeight="lg" sx={{ mb: 1.5 }}>
-    //     메뉴권한
-    //   </Typography>
       <Box role="group" aria-labelledby="rank">
         <List
           orientation="horizontal"
@@ -30,7 +21,7 @@ export default function ChipGroup() {
           }}
         >
           {role.map(
-            (item, index) => (
+            (item) => (
               <ListItem key={item}>
                 {value.includes(item) && (
                   <Done
@@ -40,7 +31,6 @@ export default function ChipGroup() {
                 )}
                 <Checkbox
                   size="sm"
-                  disabled={index === 0}
                   disableIcon
                   overlay
                   label={item}
@@ -69,6 +59,5 @@ export default function ChipGroup() {
           )}
         </List>
       </Box>
-    // </Sheet>
   );
 }

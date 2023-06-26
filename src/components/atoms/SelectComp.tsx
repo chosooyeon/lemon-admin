@@ -12,7 +12,7 @@ const SelectComp = ({props}:ChildProps) => {
       placeholder="선택하세요"
       indicator={<KeyboardArrowDown />}
       sx={{
-        width: 240,
+        width: 230,
         [`& .${selectClasses.indicator}`]: {
           transition: '0.2s',
           [`&.${selectClasses.expanded}`]: {

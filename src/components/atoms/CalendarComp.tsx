@@ -1,14 +1,19 @@
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Input from '@mui/joy/Input';
+import Stack from '@mui/joy/Stack';
 
 export default function CalendarComp() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DatePicker']}>
-        <DatePicker label="Basic date picker" />
-      </DemoContainer>
-    </LocalizationProvider>
+    <Stack spacing={1.5} sx={{ minWidth: 300 }}>
+      <Input
+        className='w-[230px]'
+        type="date"
+        slotProps={{
+          input: {
+            min: '2018-06-07T00:00',
+            max: '2018-06-14T00:00',
+          },
+        }}
+      />
+    </Stack>
   );
 }
