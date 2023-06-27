@@ -6,6 +6,9 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import { Box, Button } from '@mui/joy';
 
 const UserPage = () => {
+    const title = '병원'
+    const hosNm = ['강북삼성병원', '세브란스병원']
+    const placeholder= '병원을 선택해주세요'
     return (
         <>
             <Box
@@ -35,7 +38,7 @@ const UserPage = () => {
                                 spacing={1}
                                 sx={{ marginX: '5%' }}
                             >
-                                <SelectComponent />
+                                <SelectComponent hosNm={hosNm} title={title} placeholder={placeholder}/>
                                 <Search />
                             </Stack>
                         </Card>

@@ -5,13 +5,17 @@ import { useNavigate } from "react-router-dom";
 import logo from '@/assets/logo_lemonhc_text.png'
 import { Box, Button } from '@mui/joy';
 import { SelectComponent } from '@/components/atoms/SelectComponent';
+import SelectComp from "@/components/atoms/SelectComp";
 
 interface UserValue {
   email: string
   password: string
 }
 
+
 const LoginPage = () => {
+  const title = '병원'
+  const hosNm = ['강북삼성병원', '세브란스병원']
   const { register, handleSubmit, watch, formState: { errors } } = useForm<UserValue>()
   const navigate = useNavigate();
   const passwordRef = useRef<string | null>(null)
@@ -58,7 +62,8 @@ const LoginPage = () => {
             </Stack>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
               <Stack spacing={3}>
-                <SelectComponent />
+              <SelectComponent title={''} hosNm={hosNm}/>
+              {/* <SelectComp props={hosNm} /> */}
                 <TextField
                   required
                   autoFocus
@@ -88,8 +93,8 @@ const LoginPage = () => {
                   Forgot Password ?
                 </Link>
               </Stack>
-               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap'}}>
-                     <Button size="lg" fullWidth type="submit" sx={{ mt: 3 }}>로그인</Button>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Button size="lg" fullWidth type="submit" sx={{ mt: 3 }}>로그인</Button>
               </Box>
             </form>
           </div>

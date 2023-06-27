@@ -2,24 +2,28 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Ty
 import React from "react";
 
 
+interface ChildProps {
+    title: string;
+    hosNm: string[];
+    placeholder?: string;
+}
 
-export const SelectComponent = () => {
+export const SelectComponent = ({ title, hosNm, placeholder }: ChildProps) => {
     const [hospitalCd, setHospitalCd] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
         setHospitalCd(event.target.value);
+        console.log(event.target.value);
     };
     return (
         <Stack
             alignItems="center"
             direction="row"
             spacing={1}
-            sx={{paddingRight:'8%'}}
         >
-            <Typography sx={{ width: '8%'}}>병원</Typography>
-
+            <Typography sx={{ width: title ? '10%' : '0' }}>{title}</Typography>
             <FormControl sx={{ width: 500 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">병원을 선택하세요</InputLabel>
+                <InputLabel id="demo-simple-select-autowidth-label">{placeholder ? placeholder : hosNm[0]}</InputLabel>
                 <Select
                     labelId="demo-simple-select-autowidth-label"
                     id="demo-simple-select-autowidth"
@@ -27,9 +31,11 @@ export const SelectComponent = () => {
                     onChange={handleChange}
                     fullWidth
                 >
-                    <MenuItem value={10}>레몬종합병원</MenuItem>
-                    <MenuItem value={20}>강북삼성병원</MenuItem>
-                    <MenuItem value={30}>세브란스병원</MenuItem>
+                    {
+                        hosNm.map((item) => (
+                            <MenuItem key={item} value={item}>{item}</MenuItem>
+                        ))
+                    }
                 </Select>
             </FormControl>
 

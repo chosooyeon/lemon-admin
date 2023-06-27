@@ -1,6 +1,6 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { PopupComponent } from '../atoms/PopupComponent';
+import { PopupComponent } from '../atoms/PopupComp';
 import { Card, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
