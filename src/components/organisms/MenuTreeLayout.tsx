@@ -11,6 +11,7 @@ import * as React from 'react';
 import TypoComp from "../atoms/TypoComp";
 import { comments } from "@/api";
 import { SelectComponent } from "../atoms/SelectComponent";
+import { useState } from "react";
 
 const MenuTreeLayout = () => {
     let res = comments()
@@ -18,11 +19,14 @@ const MenuTreeLayout = () => {
         console.log(res,"res")
     })
 
+    const [selectBoxData, setSelectBoxData] = useState("");
+
     const inputRef = React.useRef<HTMLInputElement | null>(null);
     const menu = ['투약실시','수혈실시','채혈실시']
 
     const handleSave = () => {
         console.log("저장")
+        console.log("selectBoxData", selectBoxData)
     }
 
     return(
@@ -45,7 +49,7 @@ const MenuTreeLayout = () => {
                     </Grid>
                     <Grid item>
                         <div className="flex justify-between">
-                            <SelectComponent title='상위메뉴:' hosNm={menu} size={true}/>
+                            <SelectComponent title='상위메뉴:' hosNm={menu} size={true} setData={setSelectBoxData}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='메뉴'/>

@@ -6,15 +6,17 @@ interface ChildProps {
     title: string;
     hosNm: string[];
     placeholder?: string;
-    size?: boolean
+    size?: boolean;
+    setData?: any;
 }
 
-export const SelectComponent = ({ title, hosNm, placeholder, size }: ChildProps) => {
+export const SelectComponent = ({ title, hosNm, placeholder, size, setData }: ChildProps) => {
     const [hospitalCd, setHospitalCd] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
         setHospitalCd(event.target.value);
         console.log(event.target.value);
+        setData(event.target.value)
     };
     return (
         <Stack
