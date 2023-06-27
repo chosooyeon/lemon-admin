@@ -7,10 +7,11 @@ interface ChildProps {
     hosNm: string[];
     placeholder?: string;
     size?: boolean;
+    labelWidth?: string;
     setData?: any;
 }
 
-export const SelectComponent = ({ title, hosNm, placeholder, size, setData }: ChildProps) => {
+export const SelectComponent = ({ title, hosNm, placeholder, size, labelWidth, setData }: ChildProps) => {
     const [hospitalCd, setHospitalCd] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -24,7 +25,7 @@ export const SelectComponent = ({ title, hosNm, placeholder, size, setData }: Ch
             direction="row"
             spacing={1}
         >
-            <Typography sx={{ width: title ? '10%' : '0' }}>{title}</Typography>
+            <Typography className={`w-[${labelWidth ? labelWidth: '200px'}]`}>{title}</Typography>
             <FormControl sx={{ width: 500 }} size={size ? 'small' : 'medium'}>
                 {/* <InputLabel id="demo-simple-select-autowidth-label">{placeholder ? placeholder : hosNm[0]}</InputLabel> */}
                 <Select

@@ -43,13 +43,13 @@ const MenuTreeLayout = () => {
                     <Button startDecorator={<SaveIcon />} variant="outlined" onClick={()=>handleSave()}>저장</Button>
                 </Box>
 
-                <Grid container spacing={2}>
-                    <Grid item>
+                <Grid container spacing={2} className="h-[60vh]">
+                    <Grid item xs={4} >
                         <MenuTree/>
                     </Grid>
-                    <Grid item>
+                    <Grid item xs={8} className="pr-3 pb-3">
                         <div className="flex justify-between">
-                            <SelectComponent title='상위메뉴:' hosNm={menu} size={true} setData={setSelectBoxData}/>
+                            <SelectComponent title='상위메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='메뉴'/>
