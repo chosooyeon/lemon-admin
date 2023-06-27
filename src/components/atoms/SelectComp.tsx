@@ -7,8 +7,16 @@ interface ChildProps {
 }
 
 const SelectComp = ({props}:ChildProps) => {
+
+  const handleChange = (e:any) => {
+    const val = e.target.innerText
+    console.log(val)
+  }
+
   return (
     <Select
+      onChange={(e)=>handleChange(e)}
+
       placeholder="선택하세요"
       indicator={<KeyboardArrowDown />}
       sx={{
@@ -21,8 +29,8 @@ const SelectComp = ({props}:ChildProps) => {
         },
       }}>
       {
-        props.map((item) => (
-          <Option value={item}>{item}</Option>
+        props.map((item, idx) => (
+          <Option key={idx} value={item}>{item}</Option>
         ))
       }
     </Select>

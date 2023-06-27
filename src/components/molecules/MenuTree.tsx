@@ -72,9 +72,15 @@ const StyledTreeItem = styled((props: TreeItemProps) => (
   },
 }));
 
+const handleTree = (e:any) => {
+  console.log(e.target.innerText)
+}
+
 export default function MenuTree() {
   return (
     <TreeView
+      onClick={(e)=>handleTree(e)}
+
       aria-label="customized"
       defaultExpanded={['1']}
       defaultCollapseIcon={<MinusSquare />}

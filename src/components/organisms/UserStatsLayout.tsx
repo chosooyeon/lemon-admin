@@ -11,9 +11,9 @@ const UserStatsLayout = () => {
         <>
             <Card sx={{ p: 2 }}>
                 <Grid container spacing={2}>
-                    <Grid item xs={2}><SelectComp props={['레몬종합','중앙대']}/></Grid>
-                    <Grid item xs={2}><CalendarComp/></Grid>
-                    <Grid item xs={2}><CalendarComp/></Grid>
+                    <Grid item><SelectComp props={['레몬종합','중앙대']}/></Grid>
+                    <Grid item><CalendarComp/></Grid>
+                    <Grid item><CalendarComp/></Grid>
                 </Grid>
             </Card>
 
