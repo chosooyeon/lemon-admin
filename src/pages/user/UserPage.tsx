@@ -1,12 +1,11 @@
-import { Search } from '@/components/atoms/Search';
+import { Search } from '@/components/atoms/SearchComp';
 import UserTable from '@/components/molecules/UserTable';
-import { SelectComponent } from '@/components/atoms/SelectComponent';
+import { SelectComp } from '@/components/atoms/SelectComp';
 import { Card, CardActions, Container, Stack, SvgIcon, Typography } from '@mui/material';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import { Box, Button } from '@mui/joy';
 
 const UserPage = () => {
-    const title = '병원'
     const hosNm = ['강북삼성병원', '세브란스병원']
     const placeholder= '병원을 선택해주세요'
     return (
@@ -38,8 +37,8 @@ const UserPage = () => {
                                 spacing={1}
                                 sx={{ marginX: '5%' }}
                             >
-                                <SelectComponent hosNm={hosNm} title={title} placeholder={placeholder}/>
-                                <Search />
+                                <SelectComponent title='병원' hosNm={hosNm} labelWidth={'1/12'} placeholder={placeholder}/>
+                                <Search title='키워드검색' labelWidth={'max'}/>
                             </Stack>
                         </Card>
                         <CardActions sx={{ justifyContent: 'flex-end' }}>

@@ -1,40 +1,48 @@
-import Select, { selectClasses } from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
-import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from "@mui/material";
+import React from "react";
+
 
 interface ChildProps {
-  props: string[];
+    title: string;
+    hosNm: string[];
+    placeholder?: string;
+    size?: boolean;
+    labelWidth?: string;
+    setData?: any;
 }
 
-const SelectComp = ({props}:ChildProps) => {
+export const SelectComp = ({ title, hosNm, placeholder, size, labelWidth, setData }: ChildProps) => {
+    const [hospitalCd, setHospitalCd] = React.useState('');
 
-  const handleChange = (e:any) => {
-    const val = e.target.innerText
-    console.log(val)
-  }
+    const handleChange = (event: SelectChangeEvent) => {
+        setHospitalCd(event.target.value);
+        console.log(event.target.value);
+        setData(event.target.value)
+    };
+    return (
+        <Stack
+            alignItems="center"
+            direction="row"
+            spacing={1}
+        >
+            <Typography className={`w-${labelWidth ? labelWidth: '0'}`}>{title}</Typography>
+            <FormControl sx={{ width: 500 }} size={size ? 'small' : 'medium'}>
+                <InputLabel id="demo-simple-select-autowidth-label">{placeholder ? placeholder : hosNm[0]}</InputLabel>
+                <Select
+                    labelId="demo-simple-select-autowidth-label"
+                    id="demo-simple-select-autowidth"
+                    value={hospitalCd}
+                    onChange={handleChange}
+                    fullWidth
+                >
+                    {
+                        hosNm.map((item, idx) => (
+                            <MenuItem key={idx} value={item}>{item}</MenuItem>
+                        ))
+                    }
+                </Select>
+            </FormControl>
 
-  return (
-    <Select
-      onChange={(e)=>handleChange(e)}
-
-      placeholder="선택하세요"
-      indicator={<KeyboardArrowDown />}
-      sx={{
-        width: 230,
-        [`& .${selectClasses.indicator}`]: {
-          transition: '0.2s',
-          [`&.${selectClasses.expanded}`]: {
-            transform: 'rotate(-180deg)',
-          },
-        },
-      }}>
-      {
-        props.map((item, idx) => (
-          <Option key={idx} value={item}>{item}</Option>
-        ))
-      }
-    </Select>
-  );
+        </Stack>
+    );
 }
-
-export default SelectComp

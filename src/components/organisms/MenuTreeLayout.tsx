@@ -10,7 +10,7 @@ import Checkbox from '@mui/joy/Checkbox';
 import * as React from 'react';
 import TypoComp from "../atoms/TypoComp";
 import { comments } from "@/api";
-import { SelectComponent } from "../atoms/SelectComponent";
+import { SelectComponent } from "../atoms/SelectComp";
 import { useState } from "react";
 
 const MenuTreeLayout = () => {
