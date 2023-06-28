@@ -29,7 +29,6 @@ export const SelectComp = ({ title, hosNm, placeholder, size, labelWidth, setDat
             <FormControl sx={{ m: 1, width: 500 }} size={size ? 'small' : 'medium'}>
                 <InputLabel id="select-autowidth">{placeholder ? placeholder : hosNm[0]}</InputLabel>
                 <Select
-                native 
                     id="select-autowidth"
                     value={hospitalCd}
                     label={placeholder ? placeholder : hosNm[0]}
