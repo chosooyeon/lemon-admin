@@ -26,14 +26,14 @@ export const SelectComp = ({ title, hosNm, placeholder, size, labelWidth, setDat
             spacing={1}
         >
             <Typography className={`w-${labelWidth ? labelWidth: '0'}`}>{title}</Typography>
-            <FormControl sx={{ width: 500 }} size={size ? 'small' : 'medium'}>
-                <InputLabel id="demo-simple-select-autowidth-label">{placeholder ? placeholder : hosNm[0]}</InputLabel>
+            <FormControl sx={{ m: 1, width: 500 }} size={size ? 'small' : 'medium'}>
+                <InputLabel id="select-autowidth">{placeholder ? placeholder : hosNm[0]}</InputLabel>
                 <Select
-                    labelId="demo-simple-select-autowidth-label"
-                    id="demo-simple-select-autowidth"
+                native 
+                    id="select-autowidth"
                     value={hospitalCd}
+                    label={placeholder ? placeholder : hosNm[0]}
                     onChange={handleChange}
-                    fullWidth
                 >
                     {
                         hosNm.map((item, idx) => (
@@ -42,7 +42,6 @@ export const SelectComp = ({ title, hosNm, placeholder, size, labelWidth, setDat
                     }
                 </Select>
             </FormControl>
-
         </Stack>
     );
 }
