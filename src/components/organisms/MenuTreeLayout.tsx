@@ -36,13 +36,18 @@ const MenuTreeLayout = () => {
     }
 
     const [selectBoxData, setSelectBoxData] = useState('');
+    const [topMenuData, setTopMenuData] = useState('');
+    const [menuData, setMenuData] = useState('');
+    const [menuTypeData, setMenuTypeData] = useState('');
 
     const inputRef = React.useRef<HTMLInputElement | null>(null);
     const menu = ['투약실시','수혈실시','채혈실시']
 
     const handleSave = () => {
         console.log("저장")
-        console.log("selectBoxData", selectBoxData)
+        console.log("탑메뉴:", topMenuData)
+        console.log("메뉴:", menuData)
+        console.log("메뉴타입:", menuTypeData)
     }
 
     const ref = React.createRef();
@@ -59,7 +64,7 @@ const MenuTreeLayout = () => {
             <form onSubmit={handleSubmit(onSubmitHandler)}>
                 <Card>
                     <Box className='justify-end m-3' sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-                        <Button startDecorator={<SaveIcon />} variant="outlined" type="submit">저장</Button>
+                        <Button startDecorator={<SaveIcon />} variant="outlined" onClick={handleSave}>저장</Button>
                     </Box>
 
                     <Grid container spacing={2} className="h-[60vh]">
@@ -68,15 +73,15 @@ const MenuTreeLayout = () => {
                         </Grid>
                         <Grid item xs={8} className="pr-3 pb-3">
                             <div className="flex justify-between">
-                                <SelectComp title='상위메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}
+                                <SelectComp title='상위메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setTopMenuData}
                                 {...register("topmenu")}/>
                             </div>
                             <div className="flex justify-between">
-                                <SelectComp title='메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}
+                                <SelectComp title='메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setMenuData}
                                 {...register("menu")}/>
                             </div>
                             <div className="flex justify-between">
-                                <SelectComp title='메뉴타입:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}
+                                <SelectComp title='메뉴타입:' hosNm={menu} size={true} labelWidth={'200px'} setData={setMenuTypeData}
                                 {...register("menutype")}/>
                             </div>
                             <div className="flex">
