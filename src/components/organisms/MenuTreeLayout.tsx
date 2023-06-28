@@ -1,4 +1,3 @@
-import SelectComp from "../atoms/SelectComp"
 import MenuTree from "../molecules/MenuTree"
 import { Card } from '@mui/material';
 import Grid from '@mui/material/Grid';
@@ -10,7 +9,7 @@ import Checkbox from '@mui/joy/Checkbox';
 import * as React from 'react';
 import TypoComp from "../atoms/TypoComp";
 import { comments } from "@/api";
-import { SelectComponent } from "../atoms/SelectComp";
+import { SelectComp } from "../atoms/SelectComp";
 import { useState } from "react";
 
 const MenuTreeLayout = () => {
@@ -33,8 +32,8 @@ const MenuTreeLayout = () => {
         <>
             <Card sx={{ p: 2 }}>
                 <Grid container spacing={2}>
-                    <Grid item><SelectComp props={menu}/></Grid>
-                    <Grid item><SelectComp props={menu}/></Grid>
+                    <Grid item><SelectComp hosNm={menu}/></Grid>
+                    <Grid item><SelectComp hosNm={menu}/></Grid>
                 </Grid>
             </Card>
             
@@ -49,15 +48,15 @@ const MenuTreeLayout = () => {
                     </Grid>
                     <Grid item xs={8} className="pr-3 pb-3">
                         <div className="flex justify-between">
-                            <SelectComponent title='상위메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}/>
+                            <SelectComp title='상위메뉴:' hosNm={menu} size={true} labelWidth={'200px'} setData={setSelectBoxData}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='메뉴'/>
-                            <SelectComp props={menu}/>
+                            <SelectComp hosNm={menu}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='메뉴타입:'/>
-                            <SelectComp props={menu}/>
+                            <SelectComp hosNm={menu}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='표시순서:'/>
@@ -69,15 +68,15 @@ const MenuTreeLayout = () => {
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='override menu:'/>
-                            <SelectComp props={menu}/>
+                            <SelectComp hosNm={menu}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='override imgURL:'/>
-                            <SelectComp props={menu}/>
+                            <SelectComp hosNm={menu}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='override serviceURL:'/>
-                            <SelectComp props={menu}/>
+                            <SelectComp hosNm={menu}/>
                         </div>
                         <div className="flex justify-between">
                             <TypoComp title='사용여부:'/>

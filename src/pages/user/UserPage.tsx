@@ -1,4 +1,4 @@
-import { Search } from '@/components/atoms/SearchComp';
+import { SearchComp } from '@/components/atoms/SearchComp';
 import UserTable from '@/components/molecules/UserTable';
 import { SelectComp } from '@/components/atoms/SelectComp';
 import { Card, CardActions, Container, Stack, SvgIcon, Typography } from '@mui/material';
@@ -37,8 +37,8 @@ const UserPage = () => {
                                 spacing={1}
                                 sx={{ marginX: '5%' }}
                             >
-                                <SelectComponent title='병원' hosNm={hosNm} labelWidth={'1/12'} placeholder={placeholder}/>
-                                <Search title='키워드검색' labelWidth={'max'}/>
+                                <SelectComp title='병원' hosNm={hosNm} labelWidth={'1/12'} placeholder={placeholder}/>
+                                <SearchComp title='키워드검색' labelWidth={'max'}/>
                             </Stack>
                         </Card>
                         <CardActions sx={{ justifyContent: 'flex-end' }}>

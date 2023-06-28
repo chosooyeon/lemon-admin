@@ -4,8 +4,7 @@ import { useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import logo from '@/assets/logo_lemonhc_text.png'
 import { Box, Button } from '@mui/joy';
-import { SelectComponent } from '@/components/atoms/SelectComp';
-import SelectComp from "@/components/atoms/SelectComp";
+import { SelectComp } from "@/components/atoms/SelectComp";
 
 interface UserValue {
   email: string
@@ -62,7 +61,7 @@ const LoginPage = () => {
             </Stack>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmitHandler)}>
               <Stack spacing={3}>
-              <SelectComponent title={''} hosNm={hosNm}/>
+              <SelectComp title={''} hosNm={hosNm}/>
               {/* <SelectComp props={hosNm} /> */}
                 <TextField
                   required

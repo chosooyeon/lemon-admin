@@ -3,7 +3,7 @@ import React from "react";
 
 
 interface ChildProps {
-    title: string;
+    title?: string;
     hosNm: string[];
     placeholder?: string;
     size?: boolean;
