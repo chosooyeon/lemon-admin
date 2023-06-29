@@ -1,8 +1,14 @@
 
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import { PopupComponent } from '../atoms/PopupComp';
-import { Card, IconButton } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import { Card } from '@mui/material';
+import { PopupComp } from '../atoms/PopupComp';
+
+
+export interface SimpleDialogProps {
+  open: boolean;
+  selectedValue: string;
+  onClose: (value: string) => void;
+}
 
 const columns: GridColDef[] = [
   { field: 'hospitalCd', headerName: '병원', width: 170, disableColumnMenu: true },
@@ -15,23 +21,14 @@ const columns: GridColDef[] = [
     field: 'action',
     width: 130,
     sortable: false,
-    renderCell: (params) => {
-      const onClickEdit = async () => {
-        // TODO 팝업 추가
-         return alert(JSON.stringify(params.row, null, 4));
-      };
-      const onClickDelete = async () => {};
-
+    renderCell: () => {
       return (
         <>
-          <IconButton color="secondary" onClick={onClickEdit}>
-            <EditIcon />
-          </IconButton>
+            <PopupComp columns={columns} rows={rows}/>
         </>
       );
     },
   },
-  // { id: 'action', label: 'action', minWidth: 170},
 ];
 
 const rows = [
@@ -73,7 +70,6 @@ const UserTable = () => {
           // checkboxSelection
           />
         </Card>
-        <PopupComponent />
       </div>
     </>
   )

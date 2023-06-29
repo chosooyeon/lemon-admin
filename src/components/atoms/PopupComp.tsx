@@ -1,91 +1,102 @@
-import { SelectChangeEvent, Button, DialogTitle, DialogContent, DialogContentText, Box, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Switch, DialogActions } from '@mui/material';
+import { SelectChangeEvent, Button, DialogTitle, DialogContent, DialogContentText, Box, FormControlLabel, Switch, DialogActions, IconButton, Typography, TextField, FormGroup } from '@mui/material';
 import Dialog, { DialogProps } from '@mui/material/Dialog';
 import React from 'react';
+import EditIcon from '@mui/icons-material/Edit';
+import { SelectComp } from './SelectComp';
 
-export const PopupComponent = () => {
-    const [open, setOpen] = React.useState(false);
-    const [fullWidth, setFullWidth] = React.useState(true);
-    const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('sm');
-  
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = () => {
-      setOpen(false);
-    };
-  
-    const handleMaxWidthChange = (event: SelectChangeEvent<typeof maxWidth>) => {
-      setMaxWidth(
-        // @ts-expect-error autofill of arbitrary value is not handled.
-        event.target.value,
-      );
-    };
-  
-    const handleFullWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setFullWidth(event.target.checked);
-    };
-  
-    return (
-      <React.Fragment>
-        <Button variant="outlined" onClick={handleClickOpen}>
-          Open max-width dialog
-        </Button>
-        <Dialog
-          fullWidth={fullWidth}
-          maxWidth={maxWidth}
-          open={open}
-          onClose={handleClose}
-        >
-          <DialogTitle>Optional sizes</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              You can set my maximum width and whether to adapt or not.
-            </DialogContentText>
-            <Box
-              noValidate
-              component="form"
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                m: 'auto',
-                width: 'fit-content',
-              }}
-            >
-              <FormControl sx={{ mt: 2, minWidth: 120 }}>
-                <InputLabel htmlFor="max-width">maxWidth</InputLabel>
-                <Select
-                  autoFocus
-                  value={maxWidth}
-                  onChange={handleMaxWidthChange}
-                  label="maxWidth"
-                  inputProps={{
-                    name: 'max-width',
-                    id: 'max-width',
-                  }}
-                >
-                  <MenuItem value={false as any}>false</MenuItem>
-                  <MenuItem value="xs">xs</MenuItem>
-                  <MenuItem value="sm">sm</MenuItem>
-                  <MenuItem value="md">md</MenuItem>
-                  <MenuItem value="lg">lg</MenuItem>
-                  <MenuItem value="xl">xl</MenuItem>
-                </Select>
-              </FormControl>
-              <FormControlLabel
-                sx={{ mt: 1 }}
-                control={
-                  <Switch checked={fullWidth} onChange={handleFullWidthChange} />
-                }
-                label="Full width"
-              />
-            </Box>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>Close</Button>
-          </DialogActions>
-        </Dialog>
-      </React.Fragment>
+interface ChildProps {
+  columns: any[];
+  rows: any[];
+}
+
+export const PopupComp = ({ columns, rows }: ChildProps) => {
+  const [open, setOpen] = React.useState(false);
+  const [fullWidth, setFullWidth] = React.useState(true);
+  const [maxWidth, setMaxWidth] = React.useState<DialogProps['maxWidth']>('sm');
+  const hosNm = ['강북삼성병원', '세브란스병원']
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleMaxWidthChange = (event: SelectChangeEvent<typeof maxWidth>) => {
+    setMaxWidth(
+      // @ts-expect-error autofill of arbitrary value is not handled.
+      event.target.value,
     );
-  
+  };
+
+  const handleFullWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFullWidth(event.target.checked);
+  };
+
+  return (
+    <React.Fragment>
+      <IconButton color="secondary" onClick={handleClickOpen}>
+        <EditIcon />
+      </IconButton>
+      <Dialog
+        fullWidth={fullWidth}
+        maxWidth={maxWidth}
+        open={open}
+        onClose={handleClose}
+      >
+        <DialogTitle>UPDATE USER</DialogTitle>
+        <FormGroup>
+          {
+            rows.map((item) => (
+              <>
+              <TextField
+                margin="normal"
+                name="firstName"
+                label="병원명"
+                id="1"
+                value={item.hospitalCd || ''} />
+                <TextField
+                  margin="normal"
+                  name="enabled"
+                  label="사용여부"
+                  value={item.enabled || ''} />
+                </>
+            ))
+          }
+        </FormGroup>
+
+        {/* <SelectComp hosNm={hosNm} title={''} /> */}
+
+
+        <DialogContent>
+          <DialogContentText>
+            You can set my maximum width and whether to adapt or not.
+          </DialogContentText>
+          <Box
+            noValidate
+            component="form"
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              m: 'auto',
+              width: 'fit-content',
+            }}
+          >
+
+
+            <FormControlLabel
+              sx={{ mt: 1 }}
+              control={<Switch checked={fullWidth} onChange={handleFullWidthChange} />}
+              label="Full width" />
+          </Box>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={handleClose}>Close</Button>
+        </DialogActions>
+      </Dialog>
+    </React.Fragment>
+  );
+
 }
